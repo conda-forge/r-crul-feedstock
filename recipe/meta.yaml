@@ -1,4 +1,4 @@
-{% set version = '0.5.0' %}
+{% set version = "0.5.2" %}
 
 package:
   name: r-crul
@@ -9,7 +9,7 @@ source:
   url:
     - https://cran.r-project.org/src/contrib/crul_{{ version }}.tar.gz
     - https://cran.r-project.org/src/contrib/Archive/crul/crul_{{ version }}.tar.gz
-  sha256: 471618c79fe711c686eb73bc3821b6d8018e66f212577a41dc01926302e5d224
+  sha256: e01b25606dd113941537a9399d90370fa8de133ae7b2d8c82aa8979525dad269
 
 build:
   number: 0
