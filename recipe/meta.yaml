@@ -1,4 +1,4 @@
-{% set version = "0.7.0" %}
+{% set version = "0.7.4" %}
 
 package:
   name: r-crul
@@ -9,11 +9,11 @@ source:
   url:
     - https://cran.r-project.org/src/contrib/crul_{{ version }}.tar.gz
     - https://cran.r-project.org/src/contrib/Archive/crul/crul_{{ version }}.tar.gz
-  sha256: 9ef232116a7fd04a271a87a696732fa082c05fc74608bc1b7abc6277337ef0aa
+  sha256: c963dd666ae3fc89b661ce19fce2fa19a16fc3825e1502105cae98ceb92c6014
 
 build:
   noarch: generic
-  number: 1000
+  number: 0
   script: R CMD INSTALL --build .
   rpaths:
     - lib/R/lib/
