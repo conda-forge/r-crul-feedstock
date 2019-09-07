@@ -1,13 +1,13 @@
 About r-crul
 ============
 
-Home: https://cran.r-project.org/package=crul
+Home: https://github.com/ropensci/crul (devel) https://ropenscilabs.github.io/http-testing-book/ (user manual)
 
 Package license: MIT
 
 Feedstock license: BSD 3-Clause
 
-Summary: A simple HTTP client, with tools for making HTTP requests, and mocking HTTP requests. The package is built on R6, and takes inspiration from Ruby's 'faraday' gem (<https
+Summary: A simple HTTP client, with tools for making HTTP requests, and mocking HTTP requests. The package is built on R6, and takes inspiration from Ruby's 'faraday' gem (<https://rubygems.org/gems/faraday>). The package name is a play on curl, the widely used command line tool for HTTP, and this package is built on top of the R package 'curl', an interface to 'libcurl' (<https://curl.haxx.se/libcurl>).
 
 
 
@@ -116,5 +116,6 @@ In order to produce a uniquely identifiable distribution:
 Feedstock Maintainers
 =====================
 
+* [@conda-forge/r](https://github.com/conda-forge/r/)
 * [@ocefpaf](https://github.com/ocefpaf/)
 

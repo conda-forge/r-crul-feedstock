@@ -1,19 +1,21 @@
-{% set version = "0.8.0" %}
+{% set version = '0.8.4' %}
+{% set posix = 'm2-' if win else '' %}
+{% set native = 'm2w64-' if win else '' %}
 
 package:
   name: r-crul
-  version: {{ version }}
+  version: {{ version|replace("-", "_") }}
 
 source:
-  fn: crul_{{ version }}.tar.gz
   url:
-    - https://cran.r-project.org/src/contrib/crul_{{ version }}.tar.gz
-    - https://cran.r-project.org/src/contrib/Archive/crul/crul_{{ version }}.tar.gz
-  sha256: 45300009b05ef1ff14131d97e35bf7e9cfabd2f9ff6cc3773b96a6727c0c1679
+    - {{ cran_mirror }}/src/contrib/crul_{{ version }}.tar.gz
+    - {{ cran_mirror }}/src/contrib/Archive/crul/crul_{{ version }}.tar.gz
+  sha256: dbd950ad3b68402e5a5955615b1abcb5c9bdc846c93aa25f96a7a58913d04c8b
 
 build:
+  merge_build_host: True  # [win]
+  number: 0
   noarch: generic
-  number: 1
   script: R CMD INSTALL --build .
   rpaths:
     - lib/R/lib/
@@ -21,32 +23,68 @@ build:
 
 requirements:
   build:
+    - {{posix}}zip               # [win]
+  host:
     - r-base
     - r-r6 >=2.2.0
-    - r-curl >=3.1
+    - r-curl >=3.3
     - r-httpcode >=0.2.0
+    - r-jsonlite
     - r-mime
     - r-urltools >=1.6.0
   run:
     - r-base
     - r-r6 >=2.2.0
-    - r-curl >=3.1
+    - r-curl >=3.3
     - r-httpcode >=0.2.0
+    - r-jsonlite
     - r-mime
     - r-urltools >=1.6.0
 
 test:
   commands:
-    - $R -e "library('crul')"  # [not win]
+    - $R -e "library('crul')"           # [not win]
     - "\"%R%\" -e \"library('crul')\""  # [win]
 
 about:
-  home: https://cran.r-project.org/package=crul
+  home: https://github.com/ropensci/crul (devel) https://ropenscilabs.github.io/http-testing-book/
+    (user manual)
   license: MIT
-  license_file: LICENSE
   summary: A simple HTTP client, with tools for making HTTP requests, and mocking HTTP requests.
-    The package is built on R6, and takes inspiration from Ruby's 'faraday' gem (<https
+    The package is built on R6, and takes inspiration from Ruby's 'faraday' gem (<https://rubygems.org/gems/faraday>).
+    The package name is a play on curl, the widely used command line tool for HTTP,
+    and this package is built on top of the R package 'curl', an interface to 'libcurl'
+    (<https://curl.haxx.se/libcurl>).
+  license_family: MIT
+  license_file:
+    - '{{ environ["PREFIX"] }}/lib/R/share/licenses/MIT'
+    - LICENSE
 
 extra:
   recipe-maintainers:
+    - conda-forge/r
     - ocefpaf
+
+# Package: crul
+# Title: HTTP Client
+# Description: A simple HTTP client, with tools for making HTTP requests, and mocking HTTP requests. The package is built on R6, and takes inspiration from Ruby's 'faraday' gem (<https://rubygems.org/gems/faraday>). The package name is a play on curl, the widely used command line tool for HTTP, and this package is built on top of the R package 'curl', an interface to 'libcurl' (<https://curl.haxx.se/libcurl>).
+# Version: 0.8.4
+# License: MIT + file LICENSE
+# Authors@R: c( person("Scott", "Chamberlain", role = c("aut", "cre"), email = "myrmecocystus@gmail.com", comment = c(ORCID = "0000-0003-1444-9135")) )
+# URL: https://github.com/ropensci/crul (devel) https://ropenscilabs.github.io/http-testing-book/ (user manual)
+# BugReports: https://github.com/ropensci/crul/issues
+# Encoding: UTF-8
+# Language: en-US
+# Imports: curl (>= 3.3), R6 (>= 2.2.0), urltools (>= 1.6.0), httpcode (>= 0.2.0), jsonlite, mime
+# Suggests: testthat, fauxpas (>= 0.1.0), webmockr (>= 0.1.0), knitr
+# VignetteBuilder: knitr
+# RoxygenNote: 6.1.1
+# X-schema.org-applicationCategory: Web
+# X-schema.org-keywords: http, https, API, web-services, curl, download, libcurl, async, mocking, caching
+# X-schema.org-isPartOf: https://ropensci.org
+# NeedsCompilation: no
+# Packaged: 2019-08-02 19:58:21 UTC; sckott
+# Author: Scott Chamberlain [aut, cre] (<https://orcid.org/0000-0003-1444-9135>)
+# Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>
+# Repository: CRAN
+# Date/Publication: 2019-08-02 20:30:02 UTC
