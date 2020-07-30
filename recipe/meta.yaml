@@ -1,4 +1,4 @@
-{% set version = "0.9.0" %}
+{% set version = "1.0.0" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,11 +10,11 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/crul_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/crul/crul_{{ version }}.tar.gz
-  sha256: a7b42c69ca31648a419b93c618d32d0613f3ea053e45d584e84ef422ccf531c0
+  sha256: 2ade500f6cf89b2d0ca8496b8d4df9937d6f802a35c9ad10d9fab8632cdb1027
 
 build:
-  merge_build_host: True  # [win]
-  number: 1
+  merge_build_host: true  # [win]
+  number: 0
   noarch: generic
   script: R CMD INSTALL --build .
   rpaths:
@@ -47,17 +47,13 @@ test:
     - "\"%R%\" -e \"library('crul')\""  # [win]
 
 about:
-  home: https://github.com/ropensci/crul (devel) https://ropenscilabs.github.io/http-testing-book/
-    (user manual)
+  home: https://github.com/ropensci/crul (devel) https://ropenscilabs.github.io/http-testing-book/ (user manual)
   license: MIT
-  summary: A simple HTTP client, with tools for making HTTP requests, and mocking HTTP requests.
-    The package is built on R6, and takes inspiration from Ruby's 'faraday' gem (<https://rubygems.org/gems/faraday>).
-    The package name is a play on curl, the widely used command line tool for HTTP,
-    and this package is built on top of the R package 'curl', an interface to 'libcurl'
-    (<https://curl.haxx.se/libcurl>).
+  summary: A simple HTTP client, with tools for making HTTP requests, and mocking HTTP requests. The package is built on R6, and takes inspiration from Ruby's 'faraday' gem (<https://rubygems.org/gems/faraday>). The package name is a play on curl, the widely used command line tool for HTTP, and this package is built on top
+    of the R package 'curl', an interface to 'libcurl' (<https://curl.haxx.se/libcurl>).
   license_family: MIT
   license_file:
-    - '{{ environ["PREFIX"] }}/lib/R/share/licenses/MIT'
+    - {{ environ["PREFIX"] }}/lib/R/share/licenses/MIT
     - LICENSE
 
 extra:
