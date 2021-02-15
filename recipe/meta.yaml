@@ -1,4 +1,4 @@
-{% set version = "1.0.0" %}
+{% set version = "1.1.0" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,7 +10,7 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/crul_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/crul/crul_{{ version }}.tar.gz
-  sha256: 2ade500f6cf89b2d0ca8496b8d4df9937d6f802a35c9ad10d9fab8632cdb1027
+  sha256: f0b6cfd19f7470a8aacc7621530315f83796aa64e24a47b96365963e5f615ace
 
 build:
   merge_build_host: true  # [win]
