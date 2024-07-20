@@ -1,4 +1,4 @@
-{% set version = "1.4.2" %}
+{% set version = "1.5.0" %}
 {% set posix = 'm2-' if win else '' %}
 
 package:
@@ -9,10 +9,10 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/crul_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/crul/crul_{{ version }}.tar.gz
-  sha256: 405c77f191f30ffdbf8c05542ff5dff61059e9c731d2dc5ff0bfccb616314147
+  sha256: db733778d2815f9d974b00e8df7c821cd638e069e08d73adfa606add201ebd9d
 
 build:
-  number: 1
+  number: 0
   noarch: generic
   script: R CMD INSTALL --build .
   rpaths:
