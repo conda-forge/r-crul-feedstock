@@ -1,4 +1,4 @@
-{% set version = "1.5.0" %}
+{% set version = "1.6.0" %}
 {% set posix = 'm2-' if win else '' %}
 
 package:
@@ -9,7 +9,7 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/crul_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/crul/crul_{{ version }}.tar.gz
-  sha256: db733778d2815f9d974b00e8df7c821cd638e069e08d73adfa606add201ebd9d
+  sha256: c58f77ea1b5aae7ad2c10d598d50b1269596d2d78ce1ee9a80e1aca2485c5c09
 
 build:
   number: 0
